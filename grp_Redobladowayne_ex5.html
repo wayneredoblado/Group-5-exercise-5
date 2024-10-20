@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style1.css">
+    </head>
+    <body>
+        <div class="topnav" id="myTopnav">
+            <a href="Main.htm" class="active"><img src="logo.jpeg"></a>
+            <a href="javascript:alert('Report Is not been Added so chill and check our website while were working on this');">Report</a>
+            <div class="dropdown">
+              <button class="dropbtn">Contact Us On Social Media
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="https://www.facebook.com/richie.cabantog.5">Facebook</a>
+                <a href="https://www.instagram.com/chiechi32/">Instagram</a>
+                <a href="https://github.com/pichie22">Github</a>
+              </div>
+            </div> 
+            <a href="javascript:alert('This website is only for education purpose only. this only meant for Activity in our Programming I hope We succeed achieving our dreams and not fail to this subject');">About</a>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+          </div>
+          <br>
+    
+<div class="info">
+    <img src="logo.jpeg" alt="logo" class="plmun">
+    <br>
+<div class="centered">
+<button onclick="document.getElementById('id01').style.display='block'" style="font-size: 50px;">Login</button>
+</div>
+</div>
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" id="login-form">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="logo.jpeg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" id="username" required>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" id="password" required>
+        
+      <button type="submit">Login</button>
+      <div id="login-response"></div>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+      
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+        <!-- <div class="info">
+            <img src="logo.jpeg" alt="LOGO" class="plmun">
+<form id="login-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Login" class="logbutton">
+    <div id="login-response"></div>
+  </form> </div> -->
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#login-form').submit(function(event) {
+        event.preventDefault();
+        var username = $('#username').val();
+        var password = $('#password').val();
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost/activity2/login.php',
+          data: {username: username, password: password},
+          success: function(response) {
+            $('#login-response').html(response);
+          }
+        });
+      });
+    });
+    // Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    } }
+    function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+  </script>
+  </body>
+  </html>
